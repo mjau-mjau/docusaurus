@@ -252,6 +252,7 @@ function genRouteCode(routeConfig: RouteConfig, res: LoadedRoutes): string {
     path: routePath,
     component,
     modules = {},
+    context = {},
     routes: subroutes,
     priority,
     exact,
@@ -273,6 +274,7 @@ ${JSON.stringify(routeConfig)}`,
   res.routesChunkNames[`${routePath}-${routeHash}`] = {
     // Avoid clash with a prop called "component"
     ...genChunkNames({__comp: component}, 'component', component, res),
+    ...genChunkNames({__context: context}, 'context', routePath, res),
     ...genChunkNames(modules, 'module', routePath, res),
   };
 
