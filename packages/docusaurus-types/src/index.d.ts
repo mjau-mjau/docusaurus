@@ -589,3 +589,11 @@ export type ClientModule = {
   }) => void;
   onRouteUpdateDelayed?: (args: {location: Location}) => void;
 };
+
+export type UseDataOptions = {
+  /**
+   * Throw an error, or simply return undefined if the data cannot be found. Use
+   * `true` if you are sure the data must exist.
+   */
+  failfast?: boolean;
+};
